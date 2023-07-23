@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Player>
+@{
+    Layout = "_Layout";
+}
+
+<h2>Игроки</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Balance</th>
+            <th>Registration Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var player in Model)
+        {
+            <tr>
+                <td>@player.FullName</td>
+                <td>@player.Balance</td>
+                <td>@player.RegistrationDate</td>
+                <td>@player.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>

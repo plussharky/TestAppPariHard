@@ -1,0 +1,37 @@
+﻿@using TestAppPariHard.Controllers
+@model Player
+@{
+    Layout = "_Layout";
+}
+
+<h2>Отчёт по игрокам</h2>
+
+<form asp-action="/Player/Create" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="FullName">Full Name:</label>
+        <input asp-for="FullName" type="text" class="form-control"
+               id="FullName" name="FullName" value="@Model.FullName" required>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Balance">Balance:</label>
+        <input asp-for="Balance" type="number" class="form-control"
+               id="Balance" name="Balance" value="@Model.Balance" required>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RegistrationDate">Registration Date:</label>
+        <input asp-for="RegistrationDate" type="date" class="form-control"
+            id="RegistrationDate" name="RegistrationDate"
+               value="@Model.RegistrationDate.ToString("yyyy-MM-dd")" required>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Status">Status:</label>
+        <input asp-for="Status" type="text" class="form-control"
+               id="Status" name="Status" value="@Model.Status" required>
+    </div>
+    <input type="hidden" asp-for="Bets" />
+    <input type="hidden" asp-for="Transactions" />
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

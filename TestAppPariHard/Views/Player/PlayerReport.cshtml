@@ -1,0 +1,44 @@
+﻿@model List<ReportPlayer>
+@{
+    Layout = "_Layout";
+}
+
+<h2 class="row justify-content-center align-items-center">Отчёт по игрокам</h2>
+
+<form method="get" class="form-inline">
+    <div class="d-flex align-items-center d-inline-block p-3">
+        <label for="statusFilter" class="mr-2">Статус:</label>
+        @Html.DropDownList("statusFilter", ViewBag.Statuses as SelectList, "Все", new { @class = "form-control-sm" })
+        <div class="form-check mr-2">
+            <label class="form-check-label" for="betsGreaterThanDeposits">Ставка выше внесения:</label>
+            <input type="checkbox" id="betsGreaterThanDeposits" name="betsGreaterThanDeposits" class="form-check-input" value="true">
+        </div>
+        <button type="submit" class="btn-sm btn-primary">Сформировать</button>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Balance</th>
+            <th>Registration Date</th>
+            <th>Status</th>
+            <th>Total Deposits</th>
+            <th>Total Bets</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FullName</td>
+                <td>@item.Balance</td>
+                <td>@item.RegistrationDate.ToShortDateString()</td>
+                <td>@item.Status</td>
+                <td>@item.TotalDeposits</td>
+                <td>@item.TotalBets</td>
+            </tr>
+        }
+    </tbody>
+</table>
